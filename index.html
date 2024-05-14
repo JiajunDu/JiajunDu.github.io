@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Jiajun Du</title>
+        <link rel="stylesheet" href="./css/basic.css">
+        
+        <script type="text/javascript">
+            function showAbstract(i) { showItem("abstract_" + i); }
+            function showCitation(i) { showItem("citation_" + i); }
+            function showAbstracts() { showItems("abstract"); }
+            function showCitations() { showItems("citation"); }
+            
+            function showItem(id)
+            {
+                var e = document.getElementById(id);
+                e.style.display = e.style.display === "block" ? "none" : "block";
+            }
+            
+            function showItems(x)
+            {
+                var hidden = false;
+                var items = document.getElementsByClassName(x);
+                for (var i = 0; i < items.length; i++)
+                    hidden = hidden || items[i].style.display !== "block";
+                for (var i = 0; i < items.length; i++)
+                    items[i].style.display = hidden ? "block" : "none";
+            }
+            
+            function highlightAnchor(){
+                var items = document.getElementsByClassName("highlight");
+                for (var i = 0; i < items.length; i++)
+                    items[i].className = "";
+                var x = document.getElementById(window.location.hash.substr(1));
+                if (x)
+                    x.className = "highlight";
+            }
+        </script>
+    </head>
+
+    <body onload="highlightAnchor()" onhashchange="highlightAnchor()">
+        <h1>Jiajun Du's home page</h1>
+
+        <div id="body">
+            <p>
+                I'm a computer science student studying at BUPT, a member of <a href="https://bupt-os.github.io/website/docs/team/team/">this research group</a>.
+            </p>
+
+            <h2>Blogs</h2>
+
+            <h3 id="RROS_SMP"><a style="color: black;" href="./blogs/rros_smp.html">talk: SMP mechanism in RROS</a></h3>
+            <p class="info">
+                <a style="text-decoration: underline;" href="./statics/rros_smp/RROS_SMP.pdf">Slides</a>,
+                <a style="text-decoration: underline;" href="./statics/rros_smp/RROS_SMP.pptx">pptx</a>,
+                <a style="text-decoration: underline;" href="./statics/rros_smp/RROS_SMP.drawio">draw.io</a>,
+                <a style="text-decoration: underline;" href="https://www.bilibili.com/video/BV1eE421372h/">video</a>,
+                <a style="text-decoration: underline;" href="javascript:showAbstract('talk_2024_5_10')">abstract</a>,
+                <a style="text-decoration: underline;" href="./blogs/rros_smp.html">blog</a>,
+                10 May 2024.
+            </p>
+            <p id="abstract_talk_2024_5_10" class="abstract">
+                <b>Abstract:</b> 
+                RROS 是一个双内核实时操作系统，由实时内核（使用 Rust 编写）和通用内核（Linux）组成，
+                能够提供硬实时的能力，目前正在作为在轨卫星载荷的操作系统进行实验。
+                <br/><br/>
+                SMP 是 Symmetric Multi Processing 对称多处理系统的简称，内含许多紧耦合的多处理器，所有的 CPU 共享全部资源（比如总线、内存、I/O 系统等），
+                最大的特点就是多个 CPU 之间没有区别，地位平等。
+                <br/><br/>
+                在这次分享中主要介绍了在 RROS 中实时内核的各个子系统针对多核分别提供了什么样的支持。
+            </p>
+            <p class="text">A brief introduction to the SMP mechanism in the dual-kernel rtos RROS.</p>
+
+            <h3 id="QEMU"><a style="color: black;" href="https://www.bilibili.com/video/BV1TC4y1X7Et/">talk: Basic usage of QEMU</a></h3>
+            <p class="info">
+                <a style="text-decoration: underline;" href="./statics/qemu/qemu.pdf">Slides</a>,
+                <a style="text-decoration: underline;" href="./statics/qemu/qemu.pptx">pptx</a>,
+                <a style="text-decoration: underline;" href="https://www.bilibili.com/video/BV1TC4y1X7Et/">video</a>,
+                <a style="text-decoration: underline;" href="javascript:showAbstract('talk_2023_10_27')">abstract</a>,
+                27 Oct 2023.
+            </p>
+            <p id="abstract_talk_2023_10_27" class="abstract">
+                <b>Abstract:</b> QEMU 是一个机器模拟器和虚拟器，可以模拟出来许多种处理器架构。
+                <br/><br/>
+                在开发 Linux 内核（无论是核心组件还是驱动程序）时，
+                部署、测试和调试任务占据了大部分的工作（即使不是最耗时的部分），
+                使用 QEMU 可以在宿主机之上开启一个虚拟机，并且能够对各种设备进行模拟，加快内核开发的进度。
+                例如，QEMU 的 gdb stub 提供了一种有效的方式来调试内核，
+                同时 QEMU 的设备模拟也有助于设备驱动程序的开发和测试。
+                <br/><br/>
+                在这次分享中就是主要总结了关于 QEMU 的基本使用方法，希望对想要使用 QEMU 的小白有帮助。
+            </p>
+            <p class="text">Introducing the basic usage of QEMU.</p>
+
+        </div>
+    </body>
+</html>
